@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-search.css">
-        <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -32,7 +31,6 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="js/leaflet-measure.js"></script>
         <script src="js/leaflet-search.js"></script>
         <script src="data/Batas_Rt_3.js"></script>
         <script src="data/JALAN_4.js"></script>
@@ -40,22 +38,10 @@
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[2.0401088189304497,117.27286231458606],[2.0786577898357494,117.34600450920011]]);
+        }).fitBounds([[2.0290453450230177,117.2744828367891],[2.069521848232192,117.35128168171974]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
-        var measureControl = new L.Control.Measure({
-            position: 'topleft',
-            primaryLengthUnit: 'meters',
-            secondaryLengthUnit: 'kilometers',
-            primaryAreaUnit: 'sqmeters',
-            secondaryAreaUnit: 'hectares'
-        });
-        measureControl.addTo(map);
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .innerHTML = '';
-        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
-        .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
@@ -72,10 +58,10 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        map.createPane('pane_GoogleTerrain_1');
-        map.getPane('pane_GoogleTerrain_1').style.zIndex = 401;
-        var layer_GoogleTerrain_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleTerrain_1',
+        map.createPane('pane_GoogleHybrid_1');
+        map.getPane('pane_GoogleHybrid_1').style.zIndex = 401;
+        var layer_GoogleHybrid_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_1',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
@@ -83,12 +69,12 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_GoogleTerrain_1;
-        map.addLayer(layer_GoogleTerrain_1);
-        map.createPane('pane_GoogleHybrid_2');
-        map.getPane('pane_GoogleHybrid_2').style.zIndex = 402;
-        var layer_GoogleHybrid_2 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleHybrid_2',
+        layer_GoogleHybrid_1;
+        map.addLayer(layer_GoogleHybrid_1);
+        map.createPane('pane_GoogleTerrain_2');
+        map.getPane('pane_GoogleTerrain_2').style.zIndex = 402;
+        var layer_GoogleTerrain_2 = L.tileLayer('https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleTerrain_2',
             opacity: 1.0,
             attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
@@ -96,8 +82,8 @@
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_GoogleHybrid_2;
-        map.addLayer(layer_GoogleHybrid_2);
+        layer_GoogleTerrain_2;
+        map.addLayer(layer_GoogleTerrain_2);
         function pop_Batas_Rt_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
@@ -118,14 +104,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(0,0,0,0.401)',
+                fillColor: 'rgba(0,0,0,0.293)',
                 interactive: true,
             }
                     break;
@@ -133,14 +119,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(177,77,204,0.401)',
+                fillColor: 'rgba(177,77,204,0.293)',
                 interactive: true,
             }
                     break;
@@ -148,14 +134,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(123,125,224,0.401)',
+                fillColor: 'rgba(123,125,224,0.293)',
                 interactive: true,
             }
                     break;
@@ -163,14 +149,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(220,34,186,0.401)',
+                fillColor: 'rgba(220,34,186,0.293)',
                 interactive: true,
             }
                     break;
@@ -178,14 +164,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(206,177,72,0.401)',
+                fillColor: 'rgba(206,177,72,0.293)',
                 interactive: true,
             }
                     break;
@@ -193,14 +179,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(77,220,129,0.401)',
+                fillColor: 'rgba(77,220,129,0.293)',
                 interactive: true,
             }
                     break;
@@ -208,14 +194,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(211,66,127,0.401)',
+                fillColor: 'rgba(211,66,127,0.293)',
                 interactive: true,
             }
                     break;
@@ -223,14 +209,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(238,115,39,0.401)',
+                fillColor: 'rgba(238,115,39,0.293)',
                 interactive: true,
             }
                     break;
@@ -238,14 +224,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(143,220,87,0.401)',
+                fillColor: 'rgba(143,220,87,0.293)',
                 interactive: true,
             }
                     break;
@@ -253,14 +239,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(49,129,234,0.401)',
+                fillColor: 'rgba(49,129,234,0.293)',
                 interactive: true,
             }
                     break;
@@ -268,14 +254,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(197,229,53,0.401)',
+                fillColor: 'rgba(197,229,53,0.293)',
                 interactive: true,
             }
                     break;
@@ -283,14 +269,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(122,68,208,0.401)',
+                fillColor: 'rgba(122,68,208,0.293)',
                 interactive: true,
             }
                     break;
@@ -298,14 +284,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(89,233,84,0.401)',
+                fillColor: 'rgba(89,233,84,0.293)',
                 interactive: true,
             }
                     break;
@@ -313,14 +299,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(93,208,181,0.401)',
+                fillColor: 'rgba(93,208,181,0.293)',
                 interactive: true,
             }
                     break;
@@ -328,14 +314,14 @@
                     return {
                 pane: 'pane_Batas_Rt_3',
                 opacity: 1,
-                color: 'rgba(0,0,0,0.401)',
+                color: 'rgba(0,0,0,0.293)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(109,214,234,0.401)',
+                fillColor: 'rgba(109,214,234,0.293)',
                 interactive: true,
             }
                     break;
@@ -445,7 +431,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/shop=convenience.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -457,7 +443,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/shop=convenience.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -469,7 +455,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/dollar.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -481,7 +467,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/dollar.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -493,7 +479,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/shopping_car_repair.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -505,7 +491,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/shopping_car_repair.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -517,7 +503,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/sport_soccer.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -529,7 +515,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/city_building.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -541,7 +527,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_christian3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -553,7 +539,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_christian3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -565,7 +551,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/amenity=post_box.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -577,7 +563,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/shop=convenience.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -589,7 +575,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/tourism=museum.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -601,7 +587,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/tourism=museum.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -613,7 +599,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -625,7 +611,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -637,7 +623,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -649,7 +635,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -661,7 +647,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -673,7 +659,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -685,7 +671,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_islamic3.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -697,7 +683,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/walker.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -709,7 +695,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/shop=convenience.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -721,7 +707,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/tourism=museum.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -733,7 +719,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/tourism=museum.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -745,7 +731,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/education_nursery.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -757,7 +743,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/amenity=pharmacy.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -769,7 +755,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/amenity=pharmacy.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -781,7 +767,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/walker.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -793,7 +779,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/conveneince.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -805,7 +791,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/walker.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -817,7 +803,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/sport_diving.svg',
-            iconSize: [30.4, 30.4]
+            iconSize: [15.2, 15.2]
         }),
                 interactive: true,
             }
@@ -855,7 +841,7 @@
             };
             title.addTo(map);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'Fasilitas_Umum<br /><table><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_0.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Alfamidi1.png" /></td><td>Alfamidi</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_AlfamidiLabananMakmur2.png" /></td><td>Alfamidi Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BankBRIATM3.png" /></td><td>Bank BRI ATM</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BankKaltim4.png" /></td><td>Bank Kaltim</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BengkelDolli5.png" /></td><td>Bengkel Dolli</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BengkelMotorNusantaraLabanan6.png" /></td><td>Bengkel Motor Nusantara Labanan</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_GalaxySportFutsalLabanan7.png" /></td><td>Galaxy Sport Futsal Labanan</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Gedungserbaguna8.png" /></td><td>Gedung serba guna</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Gereja9.png" /></td><td>Gereja</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_GerejaArmed10.png" /></td><td>Gereja Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_JTExpressLabanan11.png" /></td><td>J&T Express Labanan</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_JemberMart12.png" /></td><td>Jember Mart</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_KantorKepalaDesaLabananMakmur13.png" /></td><td>Kantor Kepala Desa Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_KantorPosLabananMakmur14.png" /></td><td>Kantor Pos Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Masjid2Lamin15.png" /></td><td>Masjid 2 Lamin</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidAsramaArmed16.png" /></td><td>Masjid Asrama Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidBaitulMakmur17.png" /></td><td>Masjid Baitul Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidDarussalam18.png" /></td><td>Masjid Darussalam</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidLamin19.png" /></td><td>Masjid Lamin</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidNurulJannah20.png" /></td><td>Masjid Nurul Jannah</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_masjidRayaAtTaqwa21.png" /></td><td>masjid Raya At-Taqwa</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MTSLabananMakmur22.png" /></td><td>MTS Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PasarLabananMakmur23.png" /></td><td>Pasar Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PKBM24.png" /></td><td>PKBM</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PKK25.png" /></td><td>PKK</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PlayroomAlfaqih26.png" /></td><td>Playroom Al-faqih</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PuskesmasArmed27.png" /></td><td>Puskesmas Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PuskesmasLabananMakmur28.png" /></td><td>Puskesmas Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_SDN001LabananMakmur29.png" /></td><td>SDN 001 Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_SPBULabananMakmur30.png" /></td><td>SPBU Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_TKArmed31.png" /></td><td>TK Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_WaterboomRinjani32.png" /></td><td>Waterboom Rinjani</td></tr></table>': layer_Fasilitas_Umum_5,'<img src="legend/JALAN_4.png" /> JALAN': layer_JALAN_4,'Batas_Rt<br /><table><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_BELUMDITETAPKAN0.png" /></td><td>BELUM DITETAPKAN</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT011.png" /></td><td>RT 01</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT022.png" /></td><td>RT 02</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT033.png" /></td><td>RT 03</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT044.png" /></td><td>RT 04</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT055.png" /></td><td>RT 05</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT066.png" /></td><td>RT 06</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT077.png" /></td><td>RT 07</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT088.png" /></td><td>RT 08</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT099.png" /></td><td>RT 09</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1010.png" /></td><td>RT 10</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1111.png" /></td><td>RT 11</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1212.png" /></td><td>RT 12</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1313.png" /></td><td>RT 13</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_14.png" /></td><td></td></tr></table>': layer_Batas_Rt_3,"Google Hybrid": layer_GoogleHybrid_2,"Google Terrain": layer_GoogleTerrain_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'Fasilitas_Umum<br /><table><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_0.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Alfamidi1.png" /></td><td>Alfamidi</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_AlfamidiLabananMakmur2.png" /></td><td>Alfamidi Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BankBRIATM3.png" /></td><td>Bank BRI ATM</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BankKaltim4.png" /></td><td>Bank Kaltim</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BengkelDolli5.png" /></td><td>Bengkel Dolli</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_BengkelMotorNusantaraLabanan6.png" /></td><td>Bengkel Motor Nusantara Labanan</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_GalaxySportFutsalLabanan7.png" /></td><td>Galaxy Sport Futsal Labanan</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Gedungserbaguna8.png" /></td><td>Gedung serba guna</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Gereja9.png" /></td><td>Gereja</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_GerejaArmed10.png" /></td><td>Gereja Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_JTExpressLabanan11.png" /></td><td>J&T Express Labanan</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_JemberMart12.png" /></td><td>Jember Mart</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_KantorKepalaDesaLabananMakmur13.png" /></td><td>Kantor Kepala Desa Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_KantorPosLabananMakmur14.png" /></td><td>Kantor Pos Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_Masjid2Lamin15.png" /></td><td>Masjid 2 Lamin</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidAsramaArmed16.png" /></td><td>Masjid Asrama Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidBaitulMakmur17.png" /></td><td>Masjid Baitul Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidDarussalam18.png" /></td><td>Masjid Darussalam</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidLamin19.png" /></td><td>Masjid Lamin</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MasjidNurulJannah20.png" /></td><td>Masjid Nurul Jannah</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_masjidRayaAtTaqwa21.png" /></td><td>masjid Raya At-Taqwa</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_MTSLabananMakmur22.png" /></td><td>MTS Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PasarLabananMakmur23.png" /></td><td>Pasar Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PKBM24.png" /></td><td>PKBM</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PKK25.png" /></td><td>PKK</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PlayroomAlfaqih26.png" /></td><td>Playroom Al-faqih</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PuskesmasArmed27.png" /></td><td>Puskesmas Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_PuskesmasLabananMakmur28.png" /></td><td>Puskesmas Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_SDN001LabananMakmur29.png" /></td><td>SDN 001 Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_SPBULabananMakmur30.png" /></td><td>SPBU Labanan Makmur</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_TKArmed31.png" /></td><td>TK Armed</td></tr><tr><td style="text-align: center;"><img src="legend/Fasilitas_Umum_5_WaterboomRinjani32.png" /></td><td>Waterboom Rinjani</td></tr></table>': layer_Fasilitas_Umum_5,'<img src="legend/JALAN_4.png" /> JALAN': layer_JALAN_4,'Batas_Rt<br /><table><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_BELUMDITETAPKAN0.png" /></td><td>BELUM DITETAPKAN</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT011.png" /></td><td>RT 01</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT022.png" /></td><td>RT 02</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT033.png" /></td><td>RT 03</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT044.png" /></td><td>RT 04</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT055.png" /></td><td>RT 05</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT066.png" /></td><td>RT 06</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT077.png" /></td><td>RT 07</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT088.png" /></td><td>RT 08</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT099.png" /></td><td>RT 09</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1010.png" /></td><td>RT 10</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1111.png" /></td><td>RT 11</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1212.png" /></td><td>RT 12</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_RT1313.png" /></td><td>RT 13</td></tr><tr><td style="text-align: center;"><img src="legend/Batas_Rt_3_14.png" /></td><td></td></tr></table>': layer_Batas_Rt_3,"Google Terrain": layer_GoogleTerrain_2,"Google Hybrid": layer_GoogleHybrid_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_Batas_Rt_3.eachLayer(function(layer) {
